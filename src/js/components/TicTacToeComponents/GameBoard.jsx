@@ -33,15 +33,14 @@ const Tile = ({
     actualizarMatrix(row, column, tileCharacter);
     
 
-    console.log("1",victory);
     if (activePlayer.character === player1.character) {
       if (victory === false) {
-        console.log("2");
+ 
         setActivePlayer(player2);
       }
     } else {
       if (victory === false) {
-        console.log("2");
+  
         setActivePlayer(player1);
       }
     }

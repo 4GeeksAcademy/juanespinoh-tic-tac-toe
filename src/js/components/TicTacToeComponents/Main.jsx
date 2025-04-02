@@ -4,6 +4,10 @@ import "./MainStyles.css";
 import Form from "./Form";
 import GameBoard from "./GameBoard";
 
+const VictoryScreen = () => (
+  <div>`Victoria del jugador ${activePlayer.character}`</div>
+);
+
 const Main = ({
   player1,
   player2,
@@ -61,10 +65,10 @@ const Main = ({
 
       if (hayVictoria) {
         setVictory(hayVictoria);
-        console.log(activePlayer)
+
         if (activePlayer.character !== player1.character) {
           setActivePlayer(player1);
-        }else{
+        } else {
           setActivePlayer(player2);
         }
       } else {
@@ -73,10 +77,25 @@ const Main = ({
     }
   }, [turns]);
 
+  const resetHandler=()=>{
+    setPlayer1({ name: "", character: "" })
+    setPlayer2({ name: "", character: "" })
+    setActivePlayer({})
+    setTurns(0)
+    setVictory(false)
+    setMatrix([
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ])
+
+  }
+
   return (
     <div className="mainBody  d-flex justify-content-center align-items-center flex-column">
       <h1>TicTacToe in React.js</h1>
       <h3>Its X turn</h3>
+      <button onClick={resetHandler}>reset</button>
       <div className="mainGame">
         {player1.name === "" ||
         player2.name === "" ||
@@ -90,7 +109,7 @@ const Main = ({
             setActivePlayer={setActivePlayer}
           />
         ) : victory ? (
-          `Victoria del jugador ${activePlayer.character}`
+          <VictoryScreen />
         ) : (
           <GameBoard
             activePlayer={activePlayer}
