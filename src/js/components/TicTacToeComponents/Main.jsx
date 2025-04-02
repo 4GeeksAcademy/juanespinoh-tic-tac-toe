@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import "./MainStyles.css";
 
 import Form from "./Form";
@@ -55,11 +55,14 @@ const Main = ({
 
     return false;
   }
+  useEffect(() => {
+    if (turns >= 5) {
+      console.log(activePlayer)
+      setVictory(checkVictory(matrix));
+      console.log(activePlayer)
+    }
+  }, [turns]);
 
-  if (turns >= 5) {
-    setVictory(checkVictory(matrix))
-    console.log(checkVictory(matrix), turns);
-  }
   return (
     <div className="mainBody  d-flex justify-content-center align-items-center flex-column">
       <h1>TicTacToe in React.js</h1>
@@ -76,7 +79,10 @@ const Main = ({
             player2={player2}
             setActivePlayer={setActivePlayer}
           />
-        ) : victory ? "victoria" : <GameBoard
+        ) : victory ? (
+          `Victoria del jugador ${activePlayer.character}`
+        ) : (
+          <GameBoard
             activePlayer={activePlayer}
             setActivePlayer={setActivePlayer}
             player1={player1}
@@ -84,8 +90,9 @@ const Main = ({
             setMatrix={setMatrix}
             setTurns={setTurns}
             setVictory={setVictory}
+            victory={victory}
           />
-        }
+        )}
       </div>
     </div>
   );
