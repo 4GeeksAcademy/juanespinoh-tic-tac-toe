@@ -4,8 +4,10 @@ import "./MainStyles.css";
 import Form from "./Form";
 import GameBoard from "./GameBoard";
 
-const VictoryScreen = () => (
-  <div>`Victoria del jugador ${activePlayer.character}`</div>
+const EndScreen = ({activePlayer}) => (
+
+  
+  <div>{`Victoria del jugador ${activePlayer.character}`}</div>
 );
 
 const Main = ({
@@ -109,8 +111,11 @@ const Main = ({
             setActivePlayer={setActivePlayer}
           />
         ) : victory ? (
-          <VictoryScreen />
-        ) : (
+          <EndScreen activePlayer={activePlayer} />
+        ) :victory===false && turns===9 ?
+        "empate":
+        
+        (
           <GameBoard
             activePlayer={activePlayer}
             setActivePlayer={setActivePlayer}
