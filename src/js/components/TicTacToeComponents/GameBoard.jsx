@@ -31,20 +31,22 @@ const Tile = ({
   const activePLayerHandler = (row, column, tileCharacter, victory) => {
     setTileCharacter(activePlayer.character);
     actualizarMatrix(row, column, tileCharacter);
-    setTurns((prev) => prev + 1);
+    
 
-    console.log("1");
+    console.log("1",victory);
     if (activePlayer.character === player1.character) {
-      if (!victory) {
+      if (victory === false) {
         console.log("2");
         setActivePlayer(player2);
       }
     } else {
-      if (!victory) {
+      if (victory === false) {
         console.log("2");
         setActivePlayer(player1);
       }
     }
+
+    setTurns((prev) => prev + 1);
   };
 
   if (tileCharacter) {

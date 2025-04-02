@@ -57,9 +57,19 @@ const Main = ({
   }
   useEffect(() => {
     if (turns >= 5) {
-      console.log(activePlayer)
-      setVictory(checkVictory(matrix));
-      console.log(activePlayer)
+      let hayVictoria = checkVictory(matrix);
+
+      if (hayVictoria) {
+        setVictory(hayVictoria);
+        console.log(activePlayer)
+        if (activePlayer.character !== player1.character) {
+          setActivePlayer(player1);
+        }else{
+          setActivePlayer(player2);
+        }
+      } else {
+        setVictory(hayVictoria);
+      }
     }
   }, [turns]);
 
