@@ -10,3 +10,14 @@
     width: 350px;
     height: 350px;
 }
+
+.endScreen{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(55, 49, 141, 0.818);
+  border-radius: 20px;
+ 
+}

@@ -49,7 +49,7 @@ const Tile = ({
   };
 
   if (tileCharacter) {
-    return <div className="box">{tileCharacter}</div>;
+    return <div className="box"><p style={{fontSize:"40px"}}>{tileCharacter}</p> </div>;
   }
 
   return (

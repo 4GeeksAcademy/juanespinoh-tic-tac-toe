@@ -21,6 +21,7 @@
 .col1{
     box-sizing: border-box;
     border-right: 5px solid black;
+
     border-bottom: 5px solid black;
     display: flex;
     justify-content: center;

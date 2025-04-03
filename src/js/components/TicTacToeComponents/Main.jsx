@@ -4,11 +4,20 @@ import "./MainStyles.css";
 import Form from "./Form";
 import GameBoard from "./GameBoard";
 
-const EndScreen = ({activePlayer}) => (
+const EndScreen = ({activePlayer,modo}) => {
+if(modo==="empate"){
+  return <div className="endScreen"><p style={{fontSize:"25px"}} className="text-white">Empate</p> </div>
+}
+if(activePlayer){
+   return <div className="endScreen">
+    <p className="text-white" style={{fontSize:"25px"}}>
+    {`Victoria del jugador ${activePlayer.character}`}
+    </p>
+   </div>
 
+}
   
-  <div>{`Victoria del jugador ${activePlayer.character}`}</div>
-);
+}
 
 const Main = ({
   player1,
@@ -95,9 +104,9 @@ const Main = ({
 
   return (
     <div className="mainBody  d-flex justify-content-center align-items-center flex-column">
-      <h1>TicTacToe in React.js</h1>
-      <h3>Its X turn</h3>
-      <button onClick={resetHandler}>reset</button>
+      <h1 className="text-white">TicTacToe in React.js</h1>
+      <h3 className="text-white">{ `${activePlayer.character ? `Es turno de ${activePlayer.character}` :"" }`}</h3>
+      <button className="btn btn-primary mb-2" onClick={resetHandler}>Reset</button>
       <div className="mainGame">
         {player1.name === "" ||
         player2.name === "" ||
@@ -113,7 +122,7 @@ const Main = ({
         ) : victory ? (
           <EndScreen activePlayer={activePlayer} />
         ) :victory===false && turns===9 ?
-        "empate":
+        <EndScreen modo={"empate"} />:
         
         (
           <GameBoard

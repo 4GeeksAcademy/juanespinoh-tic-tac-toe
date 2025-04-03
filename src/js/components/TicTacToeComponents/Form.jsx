@@ -6,6 +6,7 @@ const SelectName = ({ setFnc, playerNumber }) => {
     setFnc((prev) => ({ ...prev, name: e.target.value }));
   return (
     <input
+    className="formInput"
       type="text"
       placeholder={`Player ${playerNumber} Name`}
       onChange={nameChangeHandler}
@@ -27,7 +28,7 @@ const CharacterSelect = ({ setFnc1, setFnc2, character,setActivePlayer }) => {
   };
 
   return (
-    <button onClick={() => characterChangeHandler(character)}>
+    <button className="formButtonCharacter" onClick={() => characterChangeHandler(character)}>
       <p>{character}</p>
     </button>
   );
